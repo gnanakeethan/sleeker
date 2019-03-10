@@ -1,0 +1,24 @@
+
+
+{% code 
+
+type ScriptContainer struct {
+    Type string
+    Source string
+    Contents string
+}
+%}
+
+{% func RenderScript(container *ScriptContainer) %}
+{% stripspace %}
+    <script type="{%s container.Type %}"
+        {% if container.Source!="" %} 
+            src="{%s container.Source %}" 
+        {% endif %}>
+        {% if container.Contents!="" %} 
+            {%s container.Contents %} 
+        {% endif %}>
+    </script>
+{% endstripspace %}
+{% endfunc %}
+

@@ -1,0 +1,26 @@
+{% code 
+type MetaContainer struct {
+    Property string
+    Name string
+    Content string
+}
+%}
+
+{% func RenderMeta(container *MetaContainer) %}
+{% stripspace %} 
+<meta 
+    {% if container.Property!="" %}
+    property="{%s container.Property%}"
+    {% endif %}
+    {% if container.Name!="" %}
+    name="{%s container.Name%}"
+    {% endif %}
+    {% if container.Content!="" %}
+    content="{%s container.Content %}"
+    {% endif %}
+/>
+{% endstripspace %}
+
+{% endfunc %}
+
+

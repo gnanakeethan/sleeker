@@ -1,0 +1,36 @@
+The Initial Rendering
+{% import 
+(	
+"github.com/gnanakeethan/sleeker/templates/html/layouts/head"
+"github.com/gnanakeethan/sleeker/templates/html/layouts/body"
+)
+%}
+
+{% func RenderHtml(html HTML) %}
+{% stripspace %}
+<html !DOCTYPE>
+<head>
+    {% for _,meta := range html.Head.Metas %}
+        {%= head.RenderMeta(meta) %}
+    {% endfor %}
+    <title>
+        {%s html.Head.Title %} 
+    </title>
+    {% for _,style := range html.Head.Styles %}
+        {%= head.RenderStyle(style) %}
+    {% endfor %}
+    {% for _,script := range html.Head.Scripts %}
+        {%= head.RenderScript(script) %}
+    {% endfor %}
+</head>
+<body>
+    {%= body.RenderBody(html.Body.Contents) %}
+
+    {% for _,script := range html.Body.Scripts %}
+        {%= body.RenderScript(script) %}
+    {% endfor %}
+</body>
+
+</html>
+{% endstripspace %}
+{% endfunc %}

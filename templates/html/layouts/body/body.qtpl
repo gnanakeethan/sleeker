@@ -1,0 +1,5 @@
+
+
+{% func RenderBody(body string) %}
+    {%s body %}
+{% endfunc %}

@@ -1,0 +1,24 @@
+{% code 
+
+type StyleContainer struct {
+    Type string
+    Source string
+    Contents string
+}
+%}
+
+{% func RenderStyle(container *StyleContainer) %}
+{% stripspace %}
+    {% if container.Contents!="" %} 
+        <style type="{%s container.Type %}">
+            {%s container.Contents %}
+        </style>
+    {% else %}
+        <link type="{%s container.Type %}"
+            {% if container.Source!="" %} 
+                src="{%s container.Source %}" 
+            {% endif %}>
+        </link>
+    {% endif %}
+{% endstripspace %}
+{% endfunc %}
